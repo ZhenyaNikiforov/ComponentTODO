@@ -1,4 +1,4 @@
-class Todo {
+export class Todo {
     constructor (buttonCreateItem, contentTextArea, listOfTask){
         this.buttonCreateItem= document.querySelector(buttonCreateItem);
         this.contentTextArea= document.querySelector(contentTextArea);
@@ -29,7 +29,3 @@ class Todo {
         listOfTask.append(task);
     }
 }
-new Todo(".TODO-container__button", ".TODO-container__text", ".TODO-container__list");
-
-import lessFiles from './styles/main.less';
-import htmlFiles from './pages/index.pug';

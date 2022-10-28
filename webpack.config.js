@@ -24,7 +24,7 @@ const htmlPlugins = generateHtmlPlugin('./src/pages');
 const pugPlugin = [new HtmlWebpackPugPlugin({adjustIndent: true})];
 
 module.exports = {
-    entry: './src/menu.js',
+    entry: './src/index.js',
     mode: 'production',
     devServer: {
     static: './docs'
@@ -32,7 +32,7 @@ module.exports = {
     
     output: {
         path: path.resolve(__dirname, 'docs'),
-        filename: 'menu.js'
+        filename: 'index.js'
   },
     
   plugins: [
