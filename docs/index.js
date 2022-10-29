@@ -16,12 +16,12 @@ var Todo = /*#__PURE__*/function () {
     this.buttonCreateItem = document.querySelector(buttonCreateItem);
     this.contentTextArea = document.querySelector(contentTextArea);
     this.listOfTask = document.querySelector(listOfTask);
-    this.buttonCreateItem.addEventListener("click", this.createItemsOfList.bind(null, this.contentTextArea, this.listOfTask));
+    this.buttonCreateItem.addEventListener("click", this.handleClickButton.bind(null, this.contentTextArea, this.listOfTask));
   }
 
   _createClass(Todo, [{
-    key: "createItemsOfList",
-    value: function createItemsOfList(contentTextArea, listOfTask) {
+    key: "handleClickButton",
+    value: function handleClickButton(contentTextArea, listOfTask) {
       contentTextArea = contentTextArea.value;
       var task = document.createElement("li");
       task.append(contentTextArea);

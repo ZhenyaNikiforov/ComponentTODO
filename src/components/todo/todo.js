@@ -4,10 +4,10 @@ export class Todo {
         this.contentTextArea= document.querySelector(contentTextArea);
         this.listOfTask= document.querySelector(listOfTask);
 
-        this.buttonCreateItem.addEventListener("click", this.createItemsOfList.bind(null, this.contentTextArea, this.listOfTask));
+        this.buttonCreateItem.addEventListener("click", this.handleClickButton.bind(null, this.contentTextArea, this.listOfTask));
     }
 
-    createItemsOfList(contentTextArea, listOfTask){
+    handleClickButton(contentTextArea, listOfTask){
         contentTextArea= contentTextArea.value;
         let task= document.createElement("li");
         task.append(contentTextArea);
