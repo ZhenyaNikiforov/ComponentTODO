@@ -22,21 +22,27 @@ var Todo = /*#__PURE__*/function () {
   _createClass(Todo, [{
     key: "handleClickButton",
     value: function handleClickButton(contentTextArea, listOfTask) {
-      contentTextArea = contentTextArea.value;
-      var task = document.createElement("li");
-      task.append(contentTextArea);
-      task.classList.add("TODO-container__list-item");
-      var closeButton = document.createElement("button");
-      closeButton.classList.add("TODO-container__close-button");
-      closeButton.addEventListener("click", function () {
-        this.parentNode.remove();
-      });
-      var crist = document.createElement("span");
-      crist.classList.add("TODO-container__crist");
-      crist.textContent = "+";
-      closeButton.append(crist);
-      task.append(closeButton);
-      listOfTask.append(task);
+      var textContent = contentTextArea.value;
+
+      if (textContent != "") {
+        var task = document.createElement("li");
+        task.append(textContent);
+        task.classList.add("TODO-container__list-item");
+        var closeButton = document.createElement("button");
+        closeButton.classList.add("TODO-container__close-button");
+        closeButton.addEventListener("click", function () {
+          this.parentNode.remove();
+        });
+        var crist = document.createElement("span");
+        crist.classList.add("TODO-container__crist");
+        crist.textContent = "+";
+        closeButton.append(crist);
+        task.append(closeButton);
+        listOfTask.append(task);
+        contentTextArea.value = "";
+      } else {
+        alert("Введите символы в текстовое поле!");
+      }
     }
   }]);
 

@@ -8,24 +8,29 @@ export class Todo {
     }
 
     handleClickButton(contentTextArea, listOfTask){
-        contentTextArea= contentTextArea.value;
-        let task= document.createElement("li");
-        task.append(contentTextArea);
-        task.classList.add("TODO-container__list-item");
-        
-        let closeButton= document.createElement("button");
-        closeButton.classList.add("TODO-container__close-button");
-        closeButton.addEventListener("click", function(){
-            this.parentNode.remove();
-        });
-        
-        const crist= document.createElement("span");
-        crist.classList.add("TODO-container__crist");
-        crist.textContent="+";
-        
-        closeButton.append(crist);
-        task.append(closeButton);
-
-        listOfTask.append(task);
+        const textContent= contentTextArea.value;
+        if(textContent != ""){
+            let task= document.createElement("li");
+            task.append(textContent);
+            task.classList.add("TODO-container__list-item");
+            
+            let closeButton= document.createElement("button");
+            closeButton.classList.add("TODO-container__close-button");
+            closeButton.addEventListener("click", function(){
+                this.parentNode.remove();
+            });
+            
+            const crist= document.createElement("span");
+            crist.classList.add("TODO-container__crist");
+            crist.textContent="+";
+            
+            closeButton.append(crist);
+            task.append(closeButton);
+    
+            listOfTask.append(task);
+            contentTextArea.value= "";
+        }else{
+            alert("Введите символы в текстовое поле!");
+        }
     }
 }
