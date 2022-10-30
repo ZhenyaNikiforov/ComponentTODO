@@ -10,19 +10,21 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 var Todo = /*#__PURE__*/function () {
-  function Todo(buttonCreateItem, contentTextArea, listOfTask) {
+  function Todo(buttonCreateItem, classTextArea, classListOfTask) {
     _classCallCheck(this, Todo);
 
-    this.buttonCreateItem = document.querySelector(buttonCreateItem);
-    this.contentTextArea = document.querySelector(contentTextArea);
-    this.listOfTask = document.querySelector(listOfTask);
-    this.buttonCreateItem.addEventListener("click", this.handleClickButton.bind(null, this.contentTextArea, this.listOfTask));
+    this.buttonCreateItem = this.variablesDefinition(buttonCreateItem); //document.querySelector(buttonCreateItem);
+
+    this.classTextArea = classTextArea;
+    this.classListOfTask = classListOfTask;
+    this.buttonCreateItem.addEventListener("click", this.handleButtonClick.bind(this, this.classTextArea, this.classListOfTask));
   }
 
   _createClass(Todo, [{
-    key: "handleClickButton",
-    value: function handleClickButton(contentTextArea, listOfTask) {
-      var textContent = contentTextArea.value;
+    key: "handleButtonClick",
+    value: function handleButtonClick(classTextArea, classListOfTask) {
+      var textElement = this.variablesDefinition(classTextArea);
+      var textContent = textElement.value;
 
       if (textContent != "") {
         var task = document.createElement("li");
@@ -38,11 +40,18 @@ var Todo = /*#__PURE__*/function () {
         crist.textContent = "+";
         closeButton.append(crist);
         task.append(closeButton);
+        var listOfTask = this.variablesDefinition(classListOfTask);
         listOfTask.append(task);
-        contentTextArea.value = "";
+        textElement.value = "";
       } else {
         alert("Введите символы в текстовое поле!");
       }
+    }
+  }, {
+    key: "variablesDefinition",
+    value: function variablesDefinition(nameVariable) {
+      var valueVariable = document.querySelector(nameVariable);
+      return valueVariable;
     }
   }]);
 

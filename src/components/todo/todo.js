@@ -1,14 +1,15 @@
 export class Todo {
-    constructor (buttonCreateItem, contentTextArea, listOfTask){
-        this.buttonCreateItem= document.querySelector(buttonCreateItem);
-        this.contentTextArea= document.querySelector(contentTextArea);
-        this.listOfTask= document.querySelector(listOfTask);
+    constructor (buttonCreateItem, classTextArea, classListOfTask){
+        this.buttonCreateItem= this.variablesDefinition(buttonCreateItem); //document.querySelector(buttonCreateItem);
+        this.classTextArea= classTextArea;
+        this.classListOfTask= classListOfTask;
 
-        this.buttonCreateItem.addEventListener("click", this.handleClickButton.bind(null, this.contentTextArea, this.listOfTask));
+        this.buttonCreateItem.addEventListener("click", this.handleButtonClick.bind(this, this.classTextArea, this.classListOfTask));
     }
 
-    handleClickButton(contentTextArea, listOfTask){
-        const textContent= contentTextArea.value;
+    handleButtonClick(classTextArea, classListOfTask){
+        const textElement= this.variablesDefinition(classTextArea);
+        const textContent= textElement.value;
         if(textContent != ""){
             let task= document.createElement("li");
             task.append(textContent);
@@ -27,10 +28,15 @@ export class Todo {
             closeButton.append(crist);
             task.append(closeButton);
     
+            const listOfTask= this.variablesDefinition(classListOfTask);
             listOfTask.append(task);
-            contentTextArea.value= "";
+            textElement.value= "";
         }else{
             alert("Введите символы в текстовое поле!");
         }
+    }
+    variablesDefinition(nameVariable){
+        const valueVariable= document.querySelector(nameVariable);
+        return valueVariable;
     }
 }
