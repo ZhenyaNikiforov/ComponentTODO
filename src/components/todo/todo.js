@@ -1,6 +1,6 @@
 class Todo {
     constructor (buttonCreateItem, classTextArea, classListOfTask){
-        this.buttonCreateItem= this.variablesDefinition(buttonCreateItem); //document.querySelector(buttonCreateItem);
+        this.buttonCreateItem= this.getDomElement(buttonCreateItem); //document.querySelector(buttonCreateItem);
         this.classTextArea= classTextArea;
         this.classListOfTask= classListOfTask;
 
@@ -8,7 +8,7 @@ class Todo {
     }
 
     handleButtonClick(classTextArea, classListOfTask){
-        const textElement= this.variablesDefinition(classTextArea);
+        const textElement= this.getDomElement(classTextArea);
         const textContent= textElement.value;
         if(textContent != ""){
             let task= document.createElement("li");
@@ -28,16 +28,16 @@ class Todo {
             closeButton.append(crist);
             task.append(closeButton);
     
-            const listOfTask= this.variablesDefinition(classListOfTask);
+            const listOfTask= this.getDomElement(classListOfTask);
             listOfTask.append(task);
             textElement.value= "";
         }else{
             alert("Введите символы в текстовое поле!");
         }
     }
-    variablesDefinition(className){
-        return document.querySelector(className);
+    getDomElement(className){
+        return document.querySelector(className); //-variablesDefinition.
     }
 }
 
-export default Todo
+export default {Todo}
