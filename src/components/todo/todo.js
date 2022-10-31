@@ -40,4 +40,4 @@ class Todo {
     }
 }
 
-export default {Todo}
+export default Todo
