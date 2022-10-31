@@ -1,4 +1,4 @@
-export class Todo {
+class Todo {
     constructor (buttonCreateItem, classTextArea, classListOfTask){
         this.buttonCreateItem= this.variablesDefinition(buttonCreateItem); //document.querySelector(buttonCreateItem);
         this.classTextArea= classTextArea;
@@ -35,8 +35,9 @@ export class Todo {
             alert("Введите символы в текстовое поле!");
         }
     }
-    variablesDefinition(nameVariable){
-        const valueVariable= document.querySelector(nameVariable);
-        return valueVariable;
+    variablesDefinition(className){
+        return document.querySelector(className);
     }
 }
+
+export default {Todo}

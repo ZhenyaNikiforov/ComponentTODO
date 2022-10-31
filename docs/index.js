@@ -49,17 +49,20 @@ var Todo = /*#__PURE__*/function () {
     }
   }, {
     key: "variablesDefinition",
-    value: function variablesDefinition(nameVariable) {
-      var valueVariable = document.querySelector(nameVariable);
-      return valueVariable;
+    value: function variablesDefinition(className) {
+      return document.querySelector(className);
     }
   }]);
 
   return Todo;
 }();
+
+/* harmony default export */ const todo = ({
+  Todo: Todo
+});
 ;// CONCATENATED MODULE: ./src/index.js
 
-new Todo(".TODO-container__button", ".TODO-container__text", ".TODO-container__list");
+new todo.Todo(".TODO-container__button", ".TODO-container__text", ".TODO-container__list");
 
 
 /******/ })()
