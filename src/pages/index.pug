@@ -5,6 +5,9 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Document
 h1(class='first-caption') Страница компонентов
+-
+  import componentTodo from '../components/todo/todo.js';
+  
 include ../components/todo/todo.pug
 div(class='component-wrapper component-wrapper_first')
   +todo
