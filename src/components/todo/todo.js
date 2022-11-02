@@ -1,17 +1,15 @@
 class Todo {
-    constructor (buttonCreateItem, classTextArea, classListOfTask){
-        this.buttonCreateItem= this.getDomElement(buttonCreateItem); //document.querySelector(buttonCreateItem);
-        this.classTextArea= classTextArea;
-        this.classListOfTask= classListOfTask;
-        this.textInputField= this.getDomElement(this.classTextArea);
+    constructor (classButton, classTextArea, classListOfTask, identifier){
+        this.domElementButton= this.getDomElement(identifier, classButton);
+        this.domElementTextArea= this.getDomElement(identifier, classTextArea);
+        this.domElementListOfTask= this.getDomElement(identifier, classListOfTask);
 
-        this.textInputField.addEventListener("input", this.handleFieldInput.bind(this, this.buttonCreateItem, this.textInputField));
-        this.buttonCreateItem.addEventListener("click", this.handleButtonClick.bind(this, this.classTextArea, this.classListOfTask, this.buttonCreateItem));
+        this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton));
+        this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
     }
 
-    handleButtonClick(classTextArea, classListOfTask, buttonCreateItem){
-        const textElement= this.getDomElement(classTextArea);
-        const textContent= textElement.value;
+    handleButtonClick(domElementTextArea, domElementListOfTask, domElementButton){
+        const textContent= domElementTextArea.value;
         if(textContent != ""){
             let task= document.createElement("li");
             task.append(textContent);
@@ -30,22 +28,23 @@ class Todo {
             closeButton.append(crist);
             task.append(closeButton);
     
-            const listOfTask= this.getDomElement(classListOfTask);
-            listOfTask.append(task);
-            textElement.value= "";
-            buttonCreateItem.classList.remove("TODO-container__button_permitted");
+            domElementListOfTask.append(task);
+            domElementTextArea.value= "";
+            domElementButton.classList.remove("TODO-container__button_permitted");
         }else{
             alert("Введите символы в текстовое поле!");
         }
     }
-    getDomElement(className){
-        return document.querySelector(className); //-variablesDefinition.
+    getDomElement(id, className){
+        const space= " ";
+        const argument= id + space + className;
+        return document.querySelector(argument);
     }
-    handleFieldInput(buttonCreateItem, textInputField){
-        if(textInputField.value != ""){
-            buttonCreateItem.classList.add("TODO-container__button_permitted");
+    handleFieldInput(domElementButton, domElementTextArea){
+        if(domElementTextArea.value != ""){
+            domElementButton.classList.add("TODO-container__button_permitted");
         }else{
-            buttonCreateItem.classList.remove("TODO-container__button_permitted"); //console.log("pusto!");
+            domElementButton.classList.remove("TODO-container__button_permitted");
         }
     }
 }
