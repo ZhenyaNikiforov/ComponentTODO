@@ -1,14 +1,15 @@
 class Todo {
-    constructor (classButton, classTextArea, classListOfTask, identifier){
+    constructor (classButton, classTextArea, classListOfTask, classCounterOfTask, identifier){
         this.domElementButton= this.getDomElement(identifier, classButton);
         this.domElementTextArea= this.getDomElement(identifier, classTextArea);
         this.domElementListOfTask= this.getDomElement(identifier, classListOfTask);
+        this.domElementCounterOfTask= this.getDomElement(identifier, classCounterOfTask)
 
-        this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton));
+        this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton, this.domElementCounterOfTask));
         this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
     }
 
-    handleButtonClick(domElementTextArea, domElementListOfTask, domElementButton){
+    handleButtonClick(domElementTextArea, domElementListOfTask, domElementButton, domElementCounterOfTask){
         const textContent= domElementTextArea.value;
         if(textContent != ""){
             let task= document.createElement("li");
@@ -19,6 +20,8 @@ class Todo {
             closeButton.classList.add("TODO-container__close-button");
             closeButton.addEventListener("click", function(){
                 this.parentNode.remove();
+                const remainingTasks= domElementListOfTask.childElementCount;
+                domElementCounterOfTask.lastElementChild.textContent= remainingTasks;
             });
             
             const crist= document.createElement("span");
@@ -31,6 +34,9 @@ class Todo {
             domElementListOfTask.append(task);
             domElementTextArea.value= "";
             domElementButton.classList.remove("TODO-container__button_permitted");
+
+            const numberOfDescendants= domElementListOfTask.childElementCount;
+            domElementCounterOfTask.lastElementChild.textContent= numberOfDescendants;
         }else{
             alert("Введите символы в текстовое поле!");
         }

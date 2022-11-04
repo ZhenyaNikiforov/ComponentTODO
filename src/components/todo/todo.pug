@@ -2,5 +2,8 @@ mixin todo(identifier)
   div(class="TODO-container", id= identifier)
     h2(class="TODO-container__caption") Создание задач
     textarea(class='TODO-container__text' id='text' name='text' cols='30' rows='10' placeholder='Введите задачу')
+    p(class='TODO-container__counter')
+      span Кол-во задач: 
+      span 0
     button(class="TODO-container__button") Добавьте
     ul(class="TODO-container__list")
