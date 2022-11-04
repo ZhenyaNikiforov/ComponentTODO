@@ -14,3 +14,10 @@ div(class='component-wrapper component-wrapper_third')
   +todo("thirdComponent")
 div(class='component-wrapper component-wrapper_fourth')
   +todo("fourthComponent")
+-
+  import Todo from '../components/todo/todo.js';
+
+  const arrayOfIdentifiers= ["#firstComponent", "#secondComponent", "#thirdComponent", "#fourthComponent"];
+  arrayOfIdentifiers.forEach(currentElement => {
+      new Todo(".TODO-container__button", ".TODO-container__text", ".TODO-container__list", ".TODO-container__counter", currentElement);
+  });
