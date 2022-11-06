@@ -1,9 +1,9 @@
 class Todo {
     constructor (componentClass){
-        this.domElementButton= this.getDomElement(componentClass, ".todo-container__button");
-        this.domElementTextArea= this.getDomElement(componentClass, ".todo-container__text");
-        this.domElementListOfTask= this.getDomElement(componentClass, ".todo-container__list");
-        this.domElementCounterOfTask= this.getDomElement(componentClass, ".todo-container__counter")
+        this.domElementButton= this.getDomElement(componentClass, ".js-todo-container__button");
+        this.domElementTextArea= this.getDomElement(componentClass, ".js-todo-container__text");
+        this.domElementListOfTask= this.getDomElement(componentClass, ".js-todo-container__list");
+        this.domElementCounterOfTask= this.getDomElement(componentClass, ".js-todo-container__counter")
 
         this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton, this.domElementCounterOfTask));
         this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
