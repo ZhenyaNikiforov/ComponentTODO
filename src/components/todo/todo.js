@@ -1,9 +1,9 @@
 class Todo {
     constructor (componentClass){
-        this.domElementButton= this.getDomElement(componentClass, ".TODO-container__button");
-        this.domElementTextArea= this.getDomElement(componentClass, ".TODO-container__text");
-        this.domElementListOfTask= this.getDomElement(componentClass, ".TODO-container__list");
-        this.domElementCounterOfTask= this.getDomElement(componentClass, ".TODO-container__counter")
+        this.domElementButton= this.getDomElement(componentClass, ".todo-container__button");
+        this.domElementTextArea= this.getDomElement(componentClass, ".todo-container__text");
+        this.domElementListOfTask= this.getDomElement(componentClass, ".todo-container__list");
+        this.domElementCounterOfTask= this.getDomElement(componentClass, ".todo-container__counter")
 
         this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton, this.domElementCounterOfTask));
         this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
@@ -14,10 +14,10 @@ class Todo {
         if(textContent != ""){
             let task= document.createElement("li");
             task.append(textContent);
-            task.classList.add("TODO-container__list-item");
+            task.classList.add("todo-container__list-item");
             
             let closeButton= document.createElement("button");
-            closeButton.classList.add("TODO-container__close-button");
+            closeButton.classList.add("todo-container__close-button");
             closeButton.addEventListener("click", function(){
                 this.parentNode.remove();
                 const remainingTasks= domElementListOfTask.childElementCount;
@@ -25,7 +25,7 @@ class Todo {
             });
             
             const crist= document.createElement("span");
-            crist.classList.add("TODO-container__crist");
+            crist.classList.add("todo-container__crist");
             crist.textContent="+";
             
             closeButton.append(crist);
@@ -33,7 +33,7 @@ class Todo {
     
             domElementListOfTask.append(task);
             domElementTextArea.value= "";
-            domElementButton.classList.remove("TODO-container__button_permitted");
+            domElementButton.classList.remove("todo-container__button_permitted");
 
             const numberOfDescendants= domElementListOfTask.childElementCount;
             domElementCounterOfTask.lastElementChild.textContent= numberOfDescendants;
@@ -48,9 +48,9 @@ class Todo {
     }
     handleFieldInput(domElementButton, domElementTextArea){
         if(domElementTextArea.value != ""){
-            domElementButton.classList.add("TODO-container__button_permitted");
+            domElementButton.classList.add("todo-container__button_permitted");
         }else{
-            domElementButton.classList.remove("TODO-container__button_permitted");
+            domElementButton.classList.remove("todo-container__button_permitted");
         }
     }
 }
