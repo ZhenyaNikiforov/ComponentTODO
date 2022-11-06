@@ -1,9 +1,9 @@
 class Todo {
-    constructor (classButton, classTextArea, classListOfTask, classCounterOfTask, identifier){
-        this.domElementButton= this.getDomElement(identifier, classButton);
-        this.domElementTextArea= this.getDomElement(identifier, classTextArea);
-        this.domElementListOfTask= this.getDomElement(identifier, classListOfTask);
-        this.domElementCounterOfTask= this.getDomElement(identifier, classCounterOfTask)
+    constructor (componentClass){
+        this.domElementButton= this.getDomElement(componentClass, ".TODO-container__button");
+        this.domElementTextArea= this.getDomElement(componentClass, ".TODO-container__text");
+        this.domElementListOfTask= this.getDomElement(componentClass, ".TODO-container__list");
+        this.domElementCounterOfTask= this.getDomElement(componentClass, ".TODO-container__counter")
 
         this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton, this.domElementCounterOfTask));
         this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
@@ -41,9 +41,9 @@ class Todo {
             alert("Введите символы в текстовое поле!");
         }
     }
-    getDomElement(id, className){
+    getDomElement(componentClass, className){
         const space= " ";
-        const argument= id + space + className;
+        const argument= componentClass + space + className;
         return document.querySelector(argument);
     }
     handleFieldInput(domElementButton, domElementTextArea){
