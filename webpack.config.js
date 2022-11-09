@@ -2,15 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const fs = require('fs');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-
-const htmlPlugins = [new HtmlWebpackPlugin ({filename: "index.html", template: "./src/pages/home/index.pug"})];
-const pugPlugin = [new HtmlWebpackPugPlugin({adjustIndent: true})];
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: './src/index.js',
-    mode: 'development',
+    mode: 'production',
     devServer: {
     static: './docs'
   },
@@ -21,20 +18,22 @@ module.exports = {
   },
     
   plugins: [
-       new MiniCssExtractPlugin()
-   ].concat(htmlPlugins, pugPlugin),
+       new MiniCssExtractPlugin(),
+       new HtmlWebpackPlugin ({filename: "index.html", template: "./src/pages/home/index.pug"}),
+       new HtmlWebpackPugPlugin({adjustIndent: true})
+   ],
     
     module: {
         rules: [
             {
                 test: /\.(ttf|eot|woff|woff2)$/i,
                 type: 'asset/resource',
-                generator: {filename: 'shr/[name][ext]'}
+                generator: {filename: 'fonts/[name][ext]'}
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 type: 'asset/resource',
-                generator: {filename: 'imag/[name][ext]'}
+                generator: {filename: 'images/[name][ext]'}
             },
             {
                 test: /\.less$/i,
@@ -58,6 +57,7 @@ module.exports = {
         ]
     },
     optimization: {
-        minimizer: [new CssMinimizerPlugin()]
+        minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+        minimize: true
     }
 }
