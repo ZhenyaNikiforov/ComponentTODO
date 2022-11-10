@@ -4,13 +4,15 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Document
-h1(class='first-caption') Страница компонентов  
-include ../../components/todo/todo.pug
-div(class='component-wrapper component-wrapper_first')
-  +todo("js-todo-container_first")
-div(class='component-wrapper component-wrapper_second')
-  +todo("js-todo-container_second")
-div(class='component-wrapper component-wrapper_third')
-  +todo("js-todo-container_third")
-div(class='component-wrapper component-wrapper_fourth')
-  +todo("js-todo-container_fourth")
+body
+  h1(class='first-caption') Страница компонентов  
+  include ../../components/todo/todo.pug
+  div(class='component-container')
+    div(class='component-wrapper')
+      +todo("js-todo-container_first")
+    div(class='component-wrapper')
+      +todo("js-todo-container_second")
+    div(class='component-wrapper')
+      +todo("js-todo-container_third")
+    div(class='component-wrapper')
+      +todo("js-todo-container_fourth")

@@ -1,39 +1,44 @@
-body, html {
+html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 250, 111);
 }
 body {
-    background-color: bisque;
-    padding-bottom: 14px;
+    background-color: rgb(252, 253, 224);
+    margin: 0 auto;
+    max-width: 1600px;
+    min-width: 320px;
+    box-sizing: border-box;
+    padding: 6px;
 }
 
 .first-caption {
-    margin: 0;
-    padding: 10px 13px;
-    background-color: blue;
-    color: aliceblue;
+    margin: 0 0 8px;
+    padding: 6px;
+    background-color: rgb(248, 255, 121);
+    color: rgb(69, 51, 73);
     font-size: 27px;
     font-weight: normal;
     font-family: FiraSans, sans-serif;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(69, 51, 73);
+}
+
+.component-container {
+    display: block;
+    width: 100%;
 }
 
 .component-wrapper {
-    margin: 0 11px;
-}
-.component-wrapper_first {
-    margin-top: 13px;
-}
-.component-wrapper_second {
-    margin: 17px auto 0;
-    max-width: 680px;
-}
-.component-wrapper_third {
-    margin: 17px auto 0;
-    max-width: 750px;
-}
-.component-wrapper_fourth {
-    margin: 17px auto 0;
-    max-width: 830px;
+    margin: 0 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(69, 51, 73);
 }
 
 @font-face {
