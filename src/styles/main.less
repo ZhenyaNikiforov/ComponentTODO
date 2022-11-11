@@ -1,3 +1,7 @@
+@import '../components/todo/todo.less';
+@import '../pages/home/home.less';
+@import './fontStyle.less';
+
 html {
     margin: 0;
     padding: 0;
@@ -6,55 +10,9 @@ html {
     background-color: rgb(255, 250, 111);
 }
 body {
-    background-color: rgb(252, 253, 224);
     margin: 0 auto;
     max-width: 1600px;
     min-width: 320px;
     box-sizing: border-box;
     padding: 6px;
 }
-
-.first-caption {
-    margin: 0 0 8px;
-    padding: 6px;
-    background-color: rgb(248, 255, 121);
-    color: rgb(69, 51, 73);
-    font-size: 27px;
-    font-weight: normal;
-    font-family: FiraSans, sans-serif;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(69, 51, 73);
-}
-
-.component-container {
-    display: block;
-    width: 100%;
-}
-
-.component-wrapper {
-    margin: 0 0 8px;
-    width: 100%;
-    box-sizing: border-box;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(69, 51, 73);
-}
-
-@font-face {
-    font-family: FiraSans;
-    src: url(../fonts/FiraSans-Bold.eot),
-        url(../fonts/FiraSans-Bold.ttf),
-        url(../fonts/FiraSans-Bold.woff),
-        url(../fonts/FiraSans-Bold.woff2);
-    font-weight: bold;
-}
-@font-face {
-    font-family: FiraSans;
-    src: url(../fonts/FiraSans-Light.eot),
-        url(../fonts/FiraSans-Light.ttf),
-        url(../fonts/FiraSans-Light.woff),
-        url(../fonts/FiraSans-Light.woff2);
-}
-
-@import '../components/todo/todo.less';

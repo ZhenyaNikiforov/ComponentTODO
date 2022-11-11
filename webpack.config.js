@@ -19,7 +19,7 @@ module.exports = {
     
   plugins: [
        new MiniCssExtractPlugin(),
-       new HtmlWebpackPlugin ({filename: "index.html", template: "./src/pages/home/index.pug"}),
+       new HtmlWebpackPlugin ({filename: "index.html", template: "./src/pages/home/index.pug", inject: 'body'}),
        new HtmlWebpackPugPlugin({adjustIndent: true})
    ],
     
