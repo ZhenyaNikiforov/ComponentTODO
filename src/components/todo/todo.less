@@ -61,13 +61,12 @@
         border-style: solid;
         border-width: 1px;
         border-color: @color-border-and-font;
-        background-color: @color-elements;
+        background-color: white;
         color: @color-border-and-font;
         font-size: 21px;
         font-weight: normal;
         font-family: FiraSans, sans-serif;
         text-align: center;
-        cursor: pointer;
     }
     &__button:focus-visible {
         outline-style: solid;
@@ -76,7 +75,8 @@
         outline-width: 1px;
     }
     &__button_permitted {
-        background-color: yellow;
+        background-color: @color-elements;
+        cursor: pointer;
     }
     &__list {
         display: block;
