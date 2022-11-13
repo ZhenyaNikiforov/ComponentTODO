@@ -1,8 +1,7 @@
 import Todo from '../../components/todo/todo.js';
 
-const todo1= new Todo(".js-todo-container_first");
-const todo2= new Todo(".js-todo-container_second");
-const todo3= new Todo(".js-todo-container_third");
-const todo4= new Todo(".js-todo-container_fourth");
+const nodeListOfWrapperComponents= document.querySelectorAll('.home-page__component-wrapper');
+const arrayOfWrapperComponents= Array.from(nodeListOfWrapperComponents);
+const arrayOfClassInstances= arrayOfWrapperComponents.map(function(a){return new Todo(a);});
 
-export {todo1, todo2, todo3, todo4};
+export default arrayOfClassInstances;

@@ -1,9 +1,9 @@
 class Todo {
-    constructor (componentClass){
-        this.domElementButton= this.getDomElement(componentClass, ".js-todo-container__button");
-        this.domElementTextArea= this.getDomElement(componentClass, ".js-todo-container__text");
-        this.domElementListOfTask= this.getDomElement(componentClass, ".js-todo-container__list");
-        this.domElementCounterOfTask= this.getDomElement(componentClass, ".js-todo-container__counter")
+    constructor (domElementWrapper){
+        this.domElementButton=  domElementWrapper.querySelector(".js-todo-container__button");
+        this.domElementTextArea=  domElementWrapper.querySelector(".js-todo-container__text");
+        this.domElementListOfTask=  domElementWrapper.querySelector(".js-todo-container__list");
+        this.domElementCounterOfTask=  domElementWrapper.querySelector(".js-todo-container__counter");
 
         this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton, this.domElementCounterOfTask));
         this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
@@ -38,11 +38,7 @@ class Todo {
         const numberOfDescendants= domElementListOfTask.childElementCount;
         domElementCounterOfTask.lastElementChild.textContent= numberOfDescendants;
     }
-    getDomElement(componentClass, className){
-        const space= " ";
-        const argument= componentClass + space + className;
-        return document.querySelector(argument);
-    }
+
     handleFieldInput(domElementButton, domElementTextArea){
         if(domElementTextArea.value != ""){
             domElementButton.removeAttribute('disabled');
