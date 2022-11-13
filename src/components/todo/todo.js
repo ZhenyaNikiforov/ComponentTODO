@@ -1,26 +1,29 @@
 class Todo {
     constructor (domElementWrapper){
-        this.domElementButton=  domElementWrapper.querySelector(".js-todo-container__button");
-        this.domElementTextArea=  domElementWrapper.querySelector(".js-todo-container__text");
-        this.domElementListOfTask=  domElementWrapper.querySelector(".js-todo-container__list");
-        this.domElementCounterOfTask=  domElementWrapper.querySelector(".js-todo-container__counter");
+        this.domElementButton=  domElementWrapper.querySelector(this.selectorButton);
+        this.domElementTextArea=  domElementWrapper.querySelector(this.selectorTextArea);
 
-        this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, this.domElementTextArea, this.domElementListOfTask, this.domElementButton, this.domElementCounterOfTask));
-        this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, this.domElementButton, this.domElementTextArea));
+        this.domElementButton.addEventListener("click", this.handleButtonClick.bind(this, domElementWrapper));
+        this.domElementTextArea.addEventListener("input", this.handleFieldInput.bind(this, domElementWrapper));
     }
 
-    handleButtonClick(domElementTextArea, domElementListOfTask, domElementButton, domElementCounterOfTask){
-        const textContent= domElementTextArea.value;
+    handleButtonClick(domElementWrapper){
+        const textArea= domElementWrapper.querySelector(this.selectorTextArea);
+        const textContent= textArea.value;
         let task= document.createElement("li");
         task.append(textContent);
         task.classList.add("todo-container__list-item");
         
         let closeButton= document.createElement("button");
         closeButton.classList.add("todo-container__close-button");
+
+        const tasks= domElementWrapper.querySelector(this.selectorListOfTask)
+        const counter= domElementWrapper.querySelector(this.selectorCounterOfTask)
+
         closeButton.addEventListener("click", function(){
             this.parentNode.remove();
-            const remainingTasks= domElementListOfTask.childElementCount;
-            domElementCounterOfTask.lastElementChild.textContent= remainingTasks;
+            const remainingTasks= tasks.childElementCount;
+            counter.lastElementChild.textContent= remainingTasks;
         });
         
         const crist= document.createElement("span");
@@ -30,24 +33,30 @@ class Todo {
         closeButton.append(crist);
         task.append(closeButton);
 
-        domElementListOfTask.append(task);
-        domElementTextArea.value= "";
-        domElementButton.classList.remove("todo-container__button_permitted");
-        domElementButton.setAttribute('disabled', 'disabled');
+        domElementWrapper.querySelector(this.selectorListOfTask).append(task);
+        textArea.value= "";
+        domElementWrapper.querySelector(this.selectorButton).classList.remove("todo-container__button_permitted");
+        domElementWrapper.querySelector(this.selectorButton).setAttribute('disabled', 'disabled');
 
-        const numberOfDescendants= domElementListOfTask.childElementCount;
-        domElementCounterOfTask.lastElementChild.textContent= numberOfDescendants;
+        const numberOfDescendants= domElementWrapper.querySelector(this.selectorListOfTask).childElementCount;
+        domElementWrapper.querySelector(this.selectorCounterOfTask).lastElementChild.textContent= numberOfDescendants;
     }
 
-    handleFieldInput(domElementButton, domElementTextArea){
-        if(domElementTextArea.value != ""){
-            domElementButton.removeAttribute('disabled');
-            domElementButton.classList.add("todo-container__button_permitted");
+    handleFieldInput(domElementWrapper){
+        const textArea= domElementWrapper.querySelector(this.selectorTextArea);
+        const button= domElementWrapper.querySelector(this.selectorButton);
+        if(textArea.value != ""){
+            button.removeAttribute('disabled');
+            button.classList.add("todo-container__button_permitted");
         }else{
-            domElementButton.classList.remove("todo-container__button_permitted");
-            domElementButton.setAttribute('disabled', 'disabled');
+            button.classList.remove("todo-container__button_permitted");
+            button.setAttribute('disabled', 'disabled');
         }
     }
+    selectorTextArea= '.js-todo-container__text';
+    selectorButton= '.js-todo-container__button';
+    selectorListOfTask= '.js-todo-container__list';
+    selectorCounterOfTask= '.js-todo-container__counter';
 }
 
 export default Todo;
