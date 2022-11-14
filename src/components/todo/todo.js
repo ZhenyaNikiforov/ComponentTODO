@@ -26,11 +26,11 @@ class Todo {
             counter.lastElementChild.textContent= remainingTasks;
         });
         
-        const crist= document.createElement("span");
-        crist.classList.add("todo-container__crist");
-        crist.textContent="+";
+        const cross= document.createElement("span");
+        cross.classList.add("todo-container__cross");
+        cross.textContent="+";
         
-        closeButton.append(crist);
+        closeButton.append(cross);
         task.append(closeButton);
 
         domElementWrapper.querySelector(this.selectorListOfTask).append(task);

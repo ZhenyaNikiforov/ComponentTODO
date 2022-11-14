@@ -1,5 +1,5 @@
-@color-container: rgb(255, 255, 103);
-@color-elements: rgb(251, 253, 189);
+@color-container: rgb(218, 234, 255);
+@color-elements: rgb(193, 198, 255);
 @color-border-and-font: rgb(69, 51, 73);
 
 .todo-container {
@@ -15,7 +15,7 @@
         color: @color-border-and-font;
         font-size: 21px;
         font-weight: normal;
-        font-family: FiraSans, sans-serif;
+        font-family: @typeFont;
     }
     &__text {
         display: block;
@@ -26,7 +26,7 @@
         width: calc(100% - 16px);
         margin: 13px 8px 0;
         border-color: @color-border-and-font;
-        font-family: FiraSans, sans-serif;
+        font-family: @typeFont;
         color: @color-border-and-font;
         font-size: 19px;
     }
@@ -42,7 +42,7 @@
         color: @color-border-and-font;
         font-weight: normal;
         font-size: 18px;
-        font-family: FiraSans;
+        font-family: @typeFont;
         word-spacing: 5px;
         display: block;
         box-sizing: border-box;
@@ -61,11 +61,11 @@
         border-style: solid;
         border-width: 1px;
         border-color: @color-border-and-font;
-        background-color: white;
+        background-color: @color-elements;
         color: @color-border-and-font;
         font-size: 21px;
         font-weight: normal;
-        font-family: FiraSans, sans-serif;
+        font-family: @typeFont;
         text-align: center;
     }
     &__button:focus-visible {
@@ -75,7 +75,7 @@
         outline-width: 1px;
     }
     &__button_permitted {
-        background-color: @color-elements;
+        background-color: white;
         cursor: pointer;
     }
     &__list {
@@ -92,7 +92,7 @@
         padding: 4px 50px 4px 11px;
         box-sizing: border-box;
         position: relative;
-        font-family: FiraSans, sans-serif;
+        font-family: @typeFont;
         color: @color-border-and-font;
         font-weight: normal;
         font-size: 16px;
@@ -110,20 +110,20 @@
         top: 4px;
         right: 4px;
         width: 42px;
-        background-color: rgb(254, 255, 229);
+        background-color: @color-elements;
         border-style: solid;
         border-width: 1px;
         border-color: @color-border-and-font;
     }
     &__close-button:focus-visible {
-        background-color: rgb(182, 183, 160);
+        background-color: rgb(255, 255, 255);
         outline-style: none;
     }
-    &__crist {
+    &__cross {
         display: block;
         text-align: center;
         transform: rotate(45deg);
-        font-family: FiraSans, sans-serif;
+        font-family: @typeFont;
         color: black;
         font-weight: normal;
         font-size: 16px;

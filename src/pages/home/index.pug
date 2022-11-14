@@ -1,16 +1,16 @@
 include ../../components/todo/todo.pug
-include ../../components/headOfPage/headOfHome.pug
+include ../../components/head/head.pug
 doctype html
 +head('Home page')
 block contentOfPage
   body(class='home-page')
     h1(class='home-page__main-caption') Страница компонентов  
     div(class='home-page__component-container')
-      div(class='home-page__component-wrapper')
+      section(class='home-page__component-wrapper')
         +todo
-      div(class='home-page__component-wrapper')
+      section(class='home-page__component-wrapper')
         +todo
-      div(class='home-page__component-wrapper')
+      section(class='home-page__component-wrapper')
         +todo
-      div(class='home-page__component-wrapper')
+      section(class='home-page__component-wrapper')
         +todo

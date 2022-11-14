@@ -1,18 +1,22 @@
+@colorTextCaption: rgb(69, 51, 73);
+@colorBackgroundPage: rgb(255, 255, 255);
+@colorBackgroundCaption: rgb(205, 202, 255);
+
 .home-page {
-    background-color: rgb(252, 253, 224);
+    background-color: @colorBackgroundPage;
 }
 
 .home-page__main-caption {
     margin: 0 0 8px;
     padding: 6px;
-    background-color: rgb(248, 255, 121);
-    color: rgb(69, 51, 73);
+    background-color: @colorBackgroundCaption;
+    color: @colorTextCaption;
     font-size: 27px;
     font-weight: normal;
-    font-family: FiraSans, sans-serif;
+    font-family: @typeFont;
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(69, 51, 73);
+    border-color: @colorTextCaption;
 }
 
 .home-page__component-container {
@@ -26,5 +30,5 @@
     box-sizing: border-box;
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(69, 51, 73);
+    border-color: @colorTextCaption;
 }
