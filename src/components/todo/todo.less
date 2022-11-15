@@ -1,6 +1,8 @@
 @color-container: rgb(218, 234, 255);
 @color-elements: rgb(193, 198, 255);
 @color-border-and-font: rgb(69, 51, 73);
+@color-white: rgb(255, 255, 255);
+@color-black: rgb(0, 0, 0);
 
 .todo-container {
     margin: 0;
@@ -75,7 +77,7 @@
         outline-width: 1px;
     }
     &__button_permitted {
-        background-color: white;
+        background-color: @color-white;
         cursor: pointer;
     }
     &__list {
@@ -101,6 +103,7 @@
         border-style: solid;
         border-width: 1px;
         border-color: @color-border-and-font;
+        word-wrap: break-word;
     }
     &__close-button {
         cursor: pointer;
@@ -116,7 +119,7 @@
         border-color: @color-border-and-font;
     }
     &__close-button:focus-visible {
-        background-color: rgb(255, 255, 255);
+        background-color: @color-white;
         outline-style: none;
     }
     &__cross {
@@ -124,7 +127,7 @@
         text-align: center;
         transform: rotate(45deg);
         font-family: @typeFont;
-        color: black;
+        color: @color-black;
         font-weight: normal;
         font-size: 16px;
     }

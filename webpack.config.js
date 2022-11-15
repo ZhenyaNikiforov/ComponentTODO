@@ -4,10 +4,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const key = process.env.NODE_ENV;
 
 module.exports = {
     entry: './src/index.js',
-    mode: 'production',
+    //mode: 'development',
+    isDev: key === 'development',
     devServer: {
     static: './docs'
   },
