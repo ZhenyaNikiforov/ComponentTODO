@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve --open",
-    "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "building": "cross-env NODE_ENV=production webpack --mode production"
+    "build": "set NODE_ENV=production&&webpack",
+    "start": "set NODE_ENV=development&&webpack serve --open"
   },
   "license": "ISC",
   "devDependencies": {

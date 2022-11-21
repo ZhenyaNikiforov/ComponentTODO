@@ -4,12 +4,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
-const key = process.env.NODE_ENV;
+let mode ='development';
+if(process.env.NODE_ENV === 'production'){
+    mode='production';
+}
 
 module.exports = {
     entry: './src/index.js',
-    //mode: 'development',
-    isDev: key === 'development',
+    mode: mode,
     devServer: {
     static: './docs'
   },
@@ -59,7 +61,6 @@ module.exports = {
         ]
     },
     optimization: {
-        minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
-        minimize: true
+        minimizer: [new CssMinimizerPlugin(), new TerserPlugin()]
     }
 }
