@@ -5,130 +5,141 @@
 @color-black: rgb(0, 0, 0);
 
 .todo-container {
-    margin: 0;
-    padding: 27px 0;
-    background-color: @color-container;
-    width: 100%;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 27px 0;
+  background-color: @color-container;
+  width: 100%;
+  box-sizing: border-box;
 
-    &__caption {
-        margin: 0 auto;
-        text-align: center;
-        color: @color-border-and-font;
-        font-size: 21px;
-        font-weight: normal;
-        font-family: @typeFont;
-    }
-    &__text {
-        display: block;
-        box-sizing: border-box;
-        padding: 8px;
-        border-style: solid;
-        border-width: 1px;
-        width: calc(100% - 16px);
-        margin: 13px 8px 0;
-        border-color: @color-border-and-font;
-        font-family: @typeFont;
-        color: @color-border-and-font;
-        font-size: 19px;
-    }
-    &__text:focus-visible {
-        outline-style: solid;
-        outline-color: @color-border-and-font;
-        outline-width: 1px;
-        outline-offset: 1px;
-    }
-    &__counter {
-        background-color: @color-elements;
-        margin: 8px 8px 0;
-        color: @color-border-and-font;
-        font-weight: normal;
-        font-size: 18px;
-        font-family: @typeFont;
-        word-spacing: 5px;
-        display: block;
-        box-sizing: border-box;
-        width: calc(100% - 16px);
-        padding: 8px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: @color-border-and-font;
-    }
-    &__button {
-        box-sizing: border-box;
-        width: 280px;
-        padding: 10px;
-        display: block;
-        margin: 18px auto 0;
-        border-style: solid;
-        border-width: 1px;
-        border-color: @color-border-and-font;
-        background-color: @color-elements;
-        color: @color-border-and-font;
-        font-size: 21px;
-        font-weight: normal;
-        font-family: @typeFont;
-        text-align: center;
-    }
-    &__button:focus-visible {
-        outline-style: solid;
-        outline-color: @color-border-and-font;
-        outline-offset: 1px;
-        outline-width: 1px;
-    }
-    &__button_permitted {
-        background-color: @color-white;
-        cursor: pointer;
-    }
-    &__list {
-        display: block;
-        box-sizing: border-box;
-        width: calc(100% - 16px);
-        margin: 17px 8px 0;
-        padding: 0;
-        background-color: transparent;
-    }
-    &__list-item {
-        margin: 0 0 5px;
-        list-style-type: none;
-        padding: 4px 50px 4px 11px;
-        box-sizing: border-box;
-        position: relative;
-        font-family: @typeFont;
-        color: @color-border-and-font;
-        font-weight: normal;
-        font-size: 16px;
-        min-height: 33px;
-        background-color: @color-elements;
-        border-style: solid;
-        border-width: 1px;
-        border-color: @color-border-and-font;
-        word-wrap: break-word;
-    }
-    &__close-button {
-        cursor: pointer;
-        box-sizing: border-box;
-        border-style: none;
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        width: 42px;
-        background-color: @color-elements;
-        border-style: solid;
-        border-width: 1px;
-        border-color: @color-border-and-font;
-    }
-    &__close-button:focus-visible {
-        background-color: @color-white;
-        outline-style: none;
-    }
-    &__cross {
-        display: block;
-        text-align: center;
-        transform: rotate(45deg);
-        font-family: @typeFont;
-        color: @color-black;
-        font-weight: normal;
-        font-size: 16px;
-    }
+  &__caption {
+    margin: 0 auto;
+    text-align: center;
+    color: @color-border-and-font;
+    font-size: 21px;
+    font-weight: normal;
+    font-family: @typeFont;
+  }
+
+  &__text {
+    display: block;
+    box-sizing: border-box;
+    padding: 8px;
+    border-style: solid;
+    border-width: 1px;
+    width: calc(100% - 16px);
+    margin: 13px 8px 0;
+    border-color: @color-border-and-font;
+    font-family: @typeFont;
+    color: @color-border-and-font;
+    font-size: 19px;
+  }
+
+  &__text:focus-visible {
+    outline-style: solid;
+    outline-color: @color-border-and-font;
+    outline-width: 1px;
+    outline-offset: 1px;
+  }
+
+  &__counter {
+    background-color: @color-elements;
+    margin: 8px 8px 0;
+    color: @color-border-and-font;
+    font-weight: normal;
+    font-size: 18px;
+    font-family: @typeFont;
+    word-spacing: 5px;
+    display: block;
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    padding: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: @color-border-and-font;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 280px;
+    padding: 10px;
+    display: block;
+    margin: 18px auto 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: @color-border-and-font;
+    background-color: @color-elements;
+    color: @color-border-and-font;
+    font-size: 21px;
+    font-weight: normal;
+    font-family: @typeFont;
+    text-align: center;
+  }
+
+  &__button:focus-visible {
+    outline-style: solid;
+    outline-color: @color-border-and-font;
+    outline-offset: 1px;
+    outline-width: 1px;
+  }
+
+  &__button_permitted {
+    background-color: @color-white;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: block;
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    margin: 17px 8px 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &__list-item {
+    margin: 0 0 5px;
+    list-style-type: none;
+    padding: 4px 50px 4px 11px;
+    box-sizing: border-box;
+    position: relative;
+    font-family: @typeFont;
+    color: @color-border-and-font;
+    font-weight: normal;
+    font-size: 16px;
+    min-height: 33px;
+    background-color: @color-elements;
+    border-style: solid;
+    border-width: 1px;
+    border-color: @color-border-and-font;
+    word-wrap: break-word;
+  }
+
+  &__close-button {
+    cursor: pointer;
+    box-sizing: border-box;
+    border-style: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 42px;
+    background-color: @color-elements;
+    border-style: solid;
+    border-width: 1px;
+    border-color: @color-border-and-font;
+  }
+
+  &__close-button:focus-visible {
+    background-color: @color-white;
+    outline-style: none;
+  }
+  
+  &__cross {
+    display: block;
+    text-align: center;
+    transform: rotate(45deg);
+    font-family: @typeFont;
+    color: @color-black;
+    font-weight: normal;
+    font-size: 16px;
+  }
 }
