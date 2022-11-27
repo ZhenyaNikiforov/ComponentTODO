@@ -22,20 +22,16 @@ class Todo {
   }
 
   bindEvent(){
-    this.handleButtonClick();
-    this.handleFieldInput();
+    this.button.addEventListener('click', this.handleButtonClick);
+    this.textArea.addEventListener('input', this.handleFieldInput);
   }
 
   setDomElement(selectorName){
     return this.domElementWrapper.querySelector(selectorName);
   }
 
-  handleButtonClick(){
-    this.button.addEventListener('click', this.createTask);
-  }
-
   @boundMethod
-  createTask(){
+  handleButtonClick(){
     const textContent= this.textArea.value;
     let task= document.createElement('li');
     task.append(textContent);
@@ -52,8 +48,12 @@ class Todo {
     task.append(closeButton);
     this.listTask.append(task);
 
-    closeButton.addEventListener('click', function(){this.parentNode.remove();});
+    closeButton.addEventListener('click', removeTask);
     closeButton.addEventListener('click', this.decrementCounter);
+    
+    function removeTask(Event){
+      Event.currentTarget.parentNode.remove();
+    }
 
     this.textArea.value= '';
 
@@ -70,12 +70,8 @@ class Todo {
     this.counterTask.lastElementChild.textContent= remainingTasks;
   }
 
-  handleFieldInput(){
-    this.textArea.addEventListener('input', this.unlockButton);
-  }
-
   @boundMethod
-  unlockButton(){
+  handleFieldInput(){
     if(this.textArea.value !=''){
       this.button.removeAttribute('disabled');
       this.button.classList.add('todo-container__button_permitted');
