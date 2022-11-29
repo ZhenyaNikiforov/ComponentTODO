@@ -22,8 +22,12 @@ class Todo {
   }
 
   bindEvent(){
-    this.button.addEventListener('click', this.handleButtonClick);
-    this.textArea.addEventListener('input', this.handleFieldInput);
+    if(!this.button|!this.textArea){
+      return false;
+    }else{
+      this.button.addEventListener('click', this.handleButtonClick);
+      this.textArea.addEventListener('input', this.handleFieldInput);
+    }
   }
 
   setDomElement(selectorName){
@@ -32,12 +36,11 @@ class Todo {
 
   @boundMethod
   handleButtonClick(){
-    const textContent= this.textArea.value;
-    let task= document.createElement('li');
-    task.append(textContent);
+    const task= document.createElement('li');
+    task.append(this.textArea.value);
     task.classList.add('todo-container__list-item');
     
-    let closeButton= document.createElement('button');
+    const closeButton= document.createElement('button');
     closeButton.classList.add("todo-container__close-button");
 
     const cross= document.createElement('span');
@@ -48,12 +51,7 @@ class Todo {
     task.append(closeButton);
     this.listTask.append(task);
 
-    closeButton.addEventListener('click', removeTask);
-    closeButton.addEventListener('click', this.decrementCounter);
-    
-    function removeTask(Event){
-      Event.currentTarget.parentNode.remove();
-    }
+    closeButton.addEventListener('click', this.handleCloseButtonClick);
 
     this.textArea.value= '';
 
@@ -61,18 +59,20 @@ class Todo {
     this.counterTask.lastElementChild.textContent= numberOfDescendants;
 
     this.button.classList.remove('todo-container__button_permitted');
-    this.button.setAttribute('disabled', 'disabled');
+    this.button.setAttribute('disabled', 'true');
   }
 
   @boundMethod
-  decrementCounter(){
+  handleCloseButtonClick(Event){
+    Event.currentTarget.parentNode.remove();
+    
     const remainingTasks= this.listTask.childElementCount;
     this.counterTask.lastElementChild.textContent= remainingTasks;
   }
 
   @boundMethod
   handleFieldInput(){
-    if(this.textArea.value !=''){
+    if(this.textArea.value !==''){
       this.button.removeAttribute('disabled');
       this.button.classList.add('todo-container__button_permitted');
     }else{
