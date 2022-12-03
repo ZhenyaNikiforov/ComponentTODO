@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "airbnb",
+  "overrides": [
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-var": 1,
+    "camelcase": 1,
+    "no-nested-ternary": 1,
+    "no-template-curly-in-string": 1,
+    "no-self-compare": 1
+  },
+  "max-len": [
+    "error",
+    {
+      "ignoreUrls": true,
+      "ignoreComments": true,
+      "ignoreRegExpLiterals": true,
+      "code": 100
+    }
+  ]
+}
