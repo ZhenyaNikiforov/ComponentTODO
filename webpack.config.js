@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 let mode ='development';
 if(process.env.NODE_ENV === 'production'){
@@ -26,8 +25,7 @@ module.exports = {
   plugins: [
        new MiniCssExtractPlugin(),
        new HtmlWebpackPlugin ({filename: "index.html", template: "./src/pages/home/index.pug", inject: 'body'}),
-       new HtmlWebpackPugPlugin({adjustIndent: true}),
-       new ESLintPlugin()
+       new HtmlWebpackPugPlugin({adjustIndent: true})
    ],
     
     module: {
