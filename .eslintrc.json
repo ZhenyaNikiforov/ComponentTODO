@@ -12,6 +12,6 @@
     },
     "parser": "@babel/eslint-parser",
     "rules": {
-        
+        "no-var": "error"
     }
 }
