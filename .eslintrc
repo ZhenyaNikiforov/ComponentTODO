@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "commonjs": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "parser": "@babel/eslint-parser",
+    "rules": {
+        "camelcase": 1,
+        "no-nested-ternary": 1,
+        "no-template-curly-in-string": 1,
+        "no-self-compare": 1,
+        "linebreak-style": ["error", "windows"]
+    }
+}
