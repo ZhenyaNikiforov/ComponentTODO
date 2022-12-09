@@ -1,7 +1,6 @@
-/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 
-import arrayOfClassInstances from './pages/home/render.js';
+import arrayClassInstances from './pages/home/render';
 
 import lessFiles from './styles/main.less';
 import htmlFiles from './pages/home/index.pug';

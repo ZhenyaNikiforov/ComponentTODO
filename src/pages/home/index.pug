@@ -2,15 +2,19 @@ include ../../components/todo/todo.pug
 include ../../components/head/head.pug
 doctype html
 +head('Home page')
-block contentOfPage
+block contentPage
   body(class='home-page')
-    h1(class='home-page__main-caption') Страница компонентов  
+    h1(class='home-page__title') Страница компонентов  
     div(class='home-page__component-container')
+
       section(class='home-page__component-wrapper js-home-page__component-wrapper')
         +todo
+
       section(class='home-page__component-wrapper js-home-page__component-wrapper')
         +todo
+
       section(class='home-page__component-wrapper js-home-page__component-wrapper')
         +todo
+        
       section(class='home-page__component-wrapper js-home-page__component-wrapper')
         +todo

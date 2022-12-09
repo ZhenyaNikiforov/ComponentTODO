@@ -23,14 +23,13 @@ class Todo {
     this.bindEvent();
   }
 
-  // eslint-disable-next-line consistent-return
   bindEvent() {
-    // eslint-disable-next-line no-bitwise
-    if (!this.button | !this.textArea) {
+    if (!this.button || !this.textArea) {
       return false;
     }
     this.button.addEventListener('click', this.handleButtonClick);
     this.textArea.addEventListener('input', this.handleFieldInput);
+    return true;
   }
 
   setDomElement(selectorName) {
@@ -58,8 +57,8 @@ class Todo {
 
     this.textArea.value = '';
 
-    const numberOfDescendants = this.listTask.childElementCount;
-    this.counterTask.lastElementChild.textContent = numberOfDescendants;
+    const numberDescendants = this.listTask.childElementCount;
+    this.counterTask.lastElementChild.textContent = numberDescendants;
 
     this.button.classList.remove('todo-container__button_permitted');
     this.button.setAttribute('disabled', 'true');
@@ -70,7 +69,7 @@ class Todo {
     Event.currentTarget.parentNode.remove();
 
     const remainingTasks = this.listTask.childElementCount;
-    this.counterTask.lastElementChild.textContent= remainingTasks;
+    this.counterTask.lastElementChild.textContent = remainingTasks;
   }
 
   @boundMethod

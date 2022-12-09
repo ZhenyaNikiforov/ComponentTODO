@@ -1,13 +1,12 @@
-// eslint-disable-next-line import/extensions
-import Todo from '../../components/todo/todo.js';
+import Todo from '../../components/todo/todo';
 
 function renderingComponents() {
-  const nodeListOfWrapperComponents = document.querySelectorAll('.js-home-page__component-wrapper');
-  const arrayOfWrapperComponents = Array.from(nodeListOfWrapperComponents);
-  const arrayOfClassInstances = arrayOfWrapperComponents.map((a) => new Todo(a));
-  return arrayOfClassInstances;
+  const nodeListWrapperComponents = document.querySelectorAll('.js-home-page__component-wrapper');
+  const arrayWrapperComponents = Array.from(nodeListWrapperComponents);
+  const arrayClassInstances = arrayWrapperComponents.map((a) => new Todo(a));
+  return arrayClassInstances;
 }
 
-const arrayOfClassInstances = renderingComponents();
+const arrayClassInstances = renderingComponents();
 
-export default arrayOfClassInstances;
+export default arrayClassInstances;
