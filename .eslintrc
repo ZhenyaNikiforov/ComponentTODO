@@ -20,6 +20,14 @@
         "no-nested-ternary": 1,
         "no-template-curly-in-string": 1,
         "no-self-compare": 1,
-        "linebreak-style": ["error", "windows"]
+        "max-len": [
+            "error",
+            {
+              "ignoreUrls": true,
+              "ignoreComments": true,
+              "ignoreRegExpLiterals": true,
+              "code": 100
+            }
+          ]
     }
 }

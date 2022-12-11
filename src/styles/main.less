@@ -1,7 +1,7 @@
-@import '../components/todo/todo.less';
-@import '../pages/home/home.less';
 @import './fontStyle.less';
 @import './globalVariables.less';
+@import '../components/todo/todo.less';
+@import '../pages/home/home.less';
 
 html {
   margin: 0;
@@ -16,4 +16,7 @@ body {
   max-width: @maxWidthBody;
   min-width: @minWidthBody;
   box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
