@@ -74,11 +74,14 @@ class Todo {
 
   @boundMethod
   handleFieldInput() {
+    const BUTTON_CLASS = 'todo-container__button_permitted';
+    const { classList } = this.button;
+
     if (this.textArea.value !== '') {
       this.button.removeAttribute('disabled');
-      this.button.classList.add('todo-container__button_permitted');
+      classList.add(BUTTON_CLASS);
     } else {
-      this.button.classList.remove('todo-container__button_permitted');
+      classList.remove(BUTTON_CLASS);
       this.button.setAttribute('disabled', 'true');
     }
   }
