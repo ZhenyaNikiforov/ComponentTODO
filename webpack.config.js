@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   mode,
   devServer: {
     static: './docs',
@@ -56,6 +56,11 @@ module.exports = {
           { loader: 'html-loader' },
           { loader: 'pug-html-loader', options: { exports: false } },
         ],
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.m?js$/,

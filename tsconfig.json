@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+  "noEmitOnError": true,
+  "target": "es5",
+  "watch": true,
+  "experimentalDecorators": true,
+  "lib": [
+    "DOM",
+    "ES2015.Core"
+  ],
+  "outDir": "./docs"
+  }
+}

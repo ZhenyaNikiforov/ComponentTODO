@@ -8,6 +8,12 @@ class Todo {
   selectorListTask = '.js-todo-container__list';
 
   selectorCounterTask = '.js-todo-container__counter';
+  
+  domElementWrapper: any;
+  button: any;
+  textArea: any;
+  listTask: any;
+  counterTask: any;
 
   constructor(domElementWrapper) {
     this.domElementWrapper = domElementWrapper;
