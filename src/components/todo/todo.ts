@@ -15,7 +15,7 @@ class Todo {
   listTask: any;
   counterTask: any;
 
-  constructor(domElementWrapper) {
+  constructor(domElementWrapper: Element) {
     this.domElementWrapper = domElementWrapper;
     this.init();
   }
@@ -38,7 +38,7 @@ class Todo {
     return true;
   }
 
-  setDomElement(selectorName) {
+  setDomElement(selectorName: string) {
     return this.domElementWrapper.querySelector(selectorName);
   }
 
@@ -71,7 +71,7 @@ class Todo {
   }
 
   @boundMethod
-  handleCloseButtonClick(Event) {
+  handleCloseButtonClick(Event: any) {
     Event.currentTarget.parentNode.remove();
 
     const remainingTasks = this.listTask.childElementCount;

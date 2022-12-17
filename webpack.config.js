@@ -23,6 +23,10 @@ module.exports = {
     filename: 'index.js',
   },
 
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({

@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-  "noEmitOnError": true,
+  "outDir": "./docs/",
+  "noImplicitAny": true,
+  "module": "es6",
   "target": "es5",
-  "watch": true,
+  "jsx": "react",
+  "allowJs": true,
+  "moduleResolution": "node",
   "experimentalDecorators": true,
-  "lib": [
-    "DOM",
-    "ES2015.Core"
-  ],
-  "outDir": "./docs"
+  "lib": ["DOM"]
   }
 }

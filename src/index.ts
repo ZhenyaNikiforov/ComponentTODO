@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 import arrayClassInstances from './pages/home/render';
+const arrayImports = arrayClassInstances; /*- Без этого пока не работает -*/
 
-import lessFiles from './styles/main.less';
-import htmlFiles from './pages/home/index.pug';
+import './styles/main.less';
+import './pages/home/index.pug';
+
