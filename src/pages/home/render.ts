@@ -7,6 +7,4 @@ function renderingComponents() {
   return arrayClassInstances;
 }
 
-const arrayClassInstances = renderingComponents();
-
-export default arrayClassInstances;
+renderingComponents();
