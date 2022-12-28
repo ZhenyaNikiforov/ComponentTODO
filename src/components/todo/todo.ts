@@ -9,20 +9,20 @@ class Todo {
 
   selectorCounterTask = '.js-todo-container__counter';
   
-  domElementWrapper: any;
-  button: any;
-  textArea: any;
-  listTask: any;
-  counterTask: any;
+  domElementWrapper: HTMLElement;
+  button: HTMLElement;
+  textArea: HTMLTextAreaElement;
+  listTask: HTMLElement;
+  counterTask: HTMLElement;
 
   constructor(domElementWrapper: Element) {
-    this.domElementWrapper = domElementWrapper;
+    this.domElementWrapper = <HTMLElement>domElementWrapper;
     this.init();
   }
 
   init() {
     this.button = this.setDomElement(this.selectorButton);
-    this.textArea = this.setDomElement(this.selectorTextArea);
+    this.textArea = <HTMLTextAreaElement>this.setDomElement(this.selectorTextArea);
     this.listTask = this.setDomElement(this.selectorListTask);
     this.counterTask = this.setDomElement(this.selectorCounterTask);
 
@@ -39,19 +39,20 @@ class Todo {
   }
 
   setDomElement(selectorName: string) {
-    return this.domElementWrapper.querySelector(selectorName);
+    const typeElement = this.domElementWrapper.querySelector(selectorName);
+    return <HTMLElement>typeElement;
   }
 
   @boundMethod
   handleButtonClick() {
-    const task = document.createElement('li');
+    const task: HTMLLIElement = document.createElement('li');
     task.append(this.textArea.value);
     task.classList.add('todo-container__list-item');
 
-    const closeButton = document.createElement('button');
+    const closeButton: HTMLButtonElement = document.createElement('button');
     closeButton.classList.add('todo-container__close-button');
 
-    const cross = document.createElement('span');
+    const cross: HTMLSpanElement = document.createElement('span');
     cross.classList.add('todo-container__cross');
     cross.textContent = '+';
 
@@ -63,19 +64,21 @@ class Todo {
 
     this.textArea.value = '';
 
-    const numberDescendants = this.listTask.childElementCount;
-    this.counterTask.lastElementChild.textContent = numberDescendants;
+    const numberDescendants: number = this.listTask.childElementCount;
+    this.counterTask.lastElementChild.textContent = String(numberDescendants);
 
     this.button.classList.remove('todo-container__button_permitted');
     this.button.setAttribute('disabled', 'true');
   }
 
   @boundMethod
-  handleCloseButtonClick(Event: any) {
-    Event.currentTarget.parentNode.remove();
+  handleCloseButtonClick(Event: MouseEvent) {
+    const button = <HTMLButtonElement>Event.currentTarget;
+    const li = <HTMLLIElement>button.parentNode;
+    li.remove();
 
-    const remainingTasks = this.listTask.childElementCount;
-    this.counterTask.lastElementChild.textContent = remainingTasks;
+    const remainingTasks: number = this.listTask.childElementCount;
+    this.counterTask.lastElementChild.textContent = String(remainingTasks);
   }
 
   @boundMethod
