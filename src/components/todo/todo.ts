@@ -65,7 +65,9 @@ class Todo {
     this.textArea.value = '';
 
     const numberDescendants: number = this.listTask.childElementCount;
-    this.counterTask.lastElementChild.textContent = String(numberDescendants);
+    if (this.counterTask.lastElementChild !== null) {
+      this.counterTask.lastElementChild.textContent = String(numberDescendants);
+    }
 
     this.button.classList.remove('todo-container__button_permitted');
     this.button.setAttribute('disabled', 'true');
@@ -78,7 +80,9 @@ class Todo {
     li.remove();
 
     const remainingTasks: number = this.listTask.childElementCount;
-    this.counterTask.lastElementChild.textContent = String(remainingTasks);
+    if (this.counterTask.lastElementChild !== null) {
+      this.counterTask.lastElementChild.textContent = String(remainingTasks);
+    }
   }
 
   @boundMethod

@@ -1,13 +1,24 @@
 {
   "compilerOptions": {
   "outDir": "./docs/",
-  "noImplicitAny": true,
   "module": "es6",
-  "target": "es5",
+  "target": "esnext",
   "jsx": "react",
   "allowJs": true,
   "moduleResolution": "node",
+  "lib": ["DOM",
+          "es6",
+          "dom.iterable",
+          "esnext"],
+  "resolveJsonModule": true,
+  "strictNullChecks": true,
+  "downlevelIteration": true,
   "experimentalDecorators": true,
-  "lib": ["DOM"]
+  "noImplicitAny": true,
+  "forceConsistentCasingInFileNames": true,
+  "noFallthroughCasesInSwitch": true,
+  "skipLibCheck": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true
   }
 }
