@@ -3,8 +3,11 @@
   "outDir": "./docs/",
   "module": "es6",
   "target": "esnext",
-  "jsx": "react",
-  "allowJs": true,
+  /*"jsx": "react",*/
+  "allowJs": false,
+  "baseUrl": ".",
+  "sourceMap": false,
+  "strict": true,
   "moduleResolution": "node",
   "lib": ["DOM",
           "es6",
@@ -20,5 +23,8 @@
   "skipLibCheck": true,
   "esModuleInterop": true,
   "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": [
+    "src/**/**/*"
+  ]
 }

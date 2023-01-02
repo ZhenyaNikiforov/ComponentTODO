@@ -15,16 +15,21 @@ class Todo {
   listTask: HTMLElement;
   counterTask: HTMLElement;
 
-  constructor(domElementWrapper: Element) {
-    this.domElementWrapper = <HTMLElement>domElementWrapper;
-    this.init();
-  }
-
-  init() {
+  constructor(domElementWrap: Element) {
     this.button = this.setDomElement(this.selectorButton);
     this.textArea = <HTMLTextAreaElement>this.setDomElement(this.selectorTextArea);
     this.listTask = this.setDomElement(this.selectorListTask);
     this.counterTask = this.setDomElement(this.selectorCounterTask);
+
+    this.domElementWrapper = <HTMLElement>domElementWrap;
+    this.init();
+  }
+
+  init() {
+    /*this.button = this.setDomElement(this.selectorButton);
+    this.textArea = <HTMLTextAreaElement>this.setDomElement(this.selectorTextArea);
+    this.listTask = this.setDomElement(this.selectorListTask);
+    this.counterTask = this.setDomElement(this.selectorCounterTask);*/
 
     this.bindEvent();
   }
