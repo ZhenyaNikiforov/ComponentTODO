@@ -10,26 +10,21 @@ class Todo {
   selectorCounterTask = '.js-todo-container__counter';
   
   domElementWrapper: HTMLElement;
-  button: HTMLElement;
-  textArea: HTMLTextAreaElement;
-  listTask: HTMLElement;
-  counterTask: HTMLElement;
+  button: HTMLElement | undefined;
+  textArea: HTMLTextAreaElement | undefined;
+  listTask: HTMLElement | undefined;
+  counterTask: HTMLElement | undefined;
 
   constructor(domElementWrap: Element) {
-    this.button = this.setDomElement(this.selectorButton);
-    this.textArea = <HTMLTextAreaElement>this.setDomElement(this.selectorTextArea);
-    this.listTask = this.setDomElement(this.selectorListTask);
-    this.counterTask = this.setDomElement(this.selectorCounterTask);
-
     this.domElementWrapper = <HTMLElement>domElementWrap;
     this.init();
   }
 
   init() {
-    /*this.button = this.setDomElement(this.selectorButton);
+    this.button = this.setDomElement(this.selectorButton);
     this.textArea = <HTMLTextAreaElement>this.setDomElement(this.selectorTextArea);
     this.listTask = this.setDomElement(this.selectorListTask);
-    this.counterTask = this.setDomElement(this.selectorCounterTask);*/
+    this.counterTask = this.setDomElement(this.selectorCounterTask);
 
     this.bindEvent();
   }
@@ -44,64 +39,74 @@ class Todo {
   }
 
   setDomElement(selectorName: string) {
+
     const typeElement = this.domElementWrapper.querySelector(selectorName);
-    return <HTMLElement>typeElement;
+    if (typeElement !== null) {
+      return <HTMLElement>typeElement;
+    }
   }
 
   @boundMethod
   handleButtonClick() {
-    const task: HTMLLIElement = document.createElement('li');
-    task.append(this.textArea.value);
-    task.classList.add('todo-container__list-item');
+    if ((this.textArea !== undefined) && (this.listTask !== undefined) && (this.counterTask !== undefined) && (this.button !== undefined)) {
+      const task: HTMLLIElement = document.createElement('li');
+      task.append(this.textArea.value);
+      task.classList.add('todo-container__list-item');
 
-    const closeButton: HTMLButtonElement = document.createElement('button');
-    closeButton.classList.add('todo-container__close-button');
+      const closeButton: HTMLButtonElement = document.createElement('button');
+      closeButton.classList.add('todo-container__close-button');
 
-    const cross: HTMLSpanElement = document.createElement('span');
-    cross.classList.add('todo-container__cross');
-    cross.textContent = '+';
+      const cross: HTMLSpanElement = document.createElement('span');
+      cross.classList.add('todo-container__cross');
+      cross.textContent = '+';
 
-    closeButton.append(cross);
-    task.append(closeButton);
-    this.listTask.append(task);
+      closeButton.append(cross);
+      task.append(closeButton);
+      this.listTask.append(task);
 
-    closeButton.addEventListener('click', this.handleCloseButtonClick);
+      closeButton.addEventListener('click', this.handleCloseButtonClick);
 
-    this.textArea.value = '';
+      this.textArea.value = '';
 
-    const numberDescendants: number = this.listTask.childElementCount;
-    if (this.counterTask.lastElementChild !== null) {
-      this.counterTask.lastElementChild.textContent = String(numberDescendants);
+      const numberDescendants: number = this.listTask.childElementCount;
+      if (this.counterTask.lastElementChild !== null) {
+        this.counterTask.lastElementChild.textContent = String(numberDescendants);
+      }
+
+      this.button.classList.remove('todo-container__button_permitted');
+      this.button.setAttribute('disabled', 'true');
     }
-
-    this.button.classList.remove('todo-container__button_permitted');
-    this.button.setAttribute('disabled', 'true');
   }
+
+    
 
   @boundMethod
   handleCloseButtonClick(Event: MouseEvent) {
-    const button = <HTMLButtonElement>Event.currentTarget;
-    const li = <HTMLLIElement>button.parentNode;
-    li.remove();
-
-    const remainingTasks: number = this.listTask.childElementCount;
-    if (this.counterTask.lastElementChild !== null) {
-      this.counterTask.lastElementChild.textContent = String(remainingTasks);
+    if ((this.listTask !== undefined) && (this.counterTask !== undefined)) {
+      const button = <HTMLButtonElement>Event.currentTarget;
+      const li = <HTMLLIElement>button.parentNode;
+      li.remove();
+  
+      const remainingTasks: number = this.listTask.childElementCount;
+      if (this.counterTask.lastElementChild !== null) {
+        this.counterTask.lastElementChild.textContent = String(remainingTasks);
+      }
     }
   }
 
   @boundMethod
   handleFieldInput() {
     const BUTTON_CLASS = 'todo-container__button_permitted';
-    const { classList } = this.button;
-
-    if (this.textArea.value !== '') {
-      this.button.removeAttribute('disabled');
-      classList.add(BUTTON_CLASS);
-    } else {
-      classList.remove(BUTTON_CLASS);
-      this.button.setAttribute('disabled', 'true');
-    }
+    
+    if ((this.textArea !== undefined) && (this.button !== undefined)) {
+      if (this.textArea.value !== '') {
+        this.button.removeAttribute('disabled');
+        this.button.classList.add(BUTTON_CLASS);
+      } else {
+        this.button.classList.remove(BUTTON_CLASS);
+        this.button.setAttribute('disabled', 'true');
+      }
+    } 
   }
 }
 

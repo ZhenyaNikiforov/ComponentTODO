@@ -9,7 +9,7 @@
   "sourceMap": false,
   "strict": true,
   "moduleResolution": "node",
-  "lib": ["DOM",
+  "lib": ["dom",
           "es6",
           "dom.iterable",
           "esnext"],
