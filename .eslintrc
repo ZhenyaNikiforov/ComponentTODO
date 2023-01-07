@@ -6,7 +6,8 @@
         "commonjs": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:@typescript-eslint/recommended"
     ],
     "overrides": [
     ],
@@ -14,7 +15,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "parser": "@babel/eslint-parser",
+    "parser": "@typescript-eslint/parser",
     "rules": {
         "camelcase": 1,
         "no-nested-ternary": 1,
@@ -29,5 +30,8 @@
               "code": 100
             }
           ]
-    }
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ]
 }
