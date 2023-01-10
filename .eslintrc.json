@@ -33,5 +33,6 @@
     },
     "plugins": [
         "@typescript-eslint"
-    ]
+    ],
+    "root": true
 }
