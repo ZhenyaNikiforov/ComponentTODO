@@ -1,17 +1,17 @@
 import { boundMethod } from 'autobind-decorator';
 
 class Todo {
-  jsTodoContainer = '.js-todo-container';
+  jsContainCompon = '.js-todo-container';
 
   todoContainer = 'todo-container';
 
-  public selectorTextArea = `${this.jsTodoContainer}__text`;
+  public selectorTextArea = `${this.jsContainCompon}__text`;
 
-  public selectorButton = `${this.jsTodoContainer}__button`;
+  public selectorButton = `${this.jsContainCompon}__button`;
 
-  public selectorListTask = `${this.jsTodoContainer}__list`;
+  public selectorListTask = `${this.jsContainCompon}__list`;
 
-  public selectorCounterTask = `${this.jsTodoContainer}__counter`;
+  public selectorCounterTask = `${this.jsContainCompon}__counter`;
 
   domElementWrapper: HTMLElement;
 
@@ -29,10 +29,10 @@ class Todo {
   }
 
   public init() {
-    this.button = <HTMLButtonElement> this.setDomElement(this.selectorButton);
-    this.textArea = <HTMLTextAreaElement> this.setDomElement(this.selectorTextArea);
-    this.listTask = <HTMLUListElement> this.setDomElement(this.selectorListTask);
-    this.counterTask = <HTMLParagraphElement> this.setDomElement(this.selectorCounterTask);
+    this.button = this.setDomElement(this.selectorButton) as HTMLButtonElement;
+    this.textArea = this.setDomElement(this.selectorTextArea) as HTMLTextAreaElement;
+    this.listTask = this.setDomElement(this.selectorListTask) as HTMLUListElement;
+    this.counterTask = this.setDomElement(this.selectorCounterTask) as HTMLParagraphElement;
 
     this.bindEvent();
   }
@@ -52,12 +52,11 @@ class Todo {
 
   @boundMethod
   public handleButtonClick() {
-    if (!this.textArea || !this.listTask) return;
-    if (!this.counterTask || !this.button) return;
+    if (!this.textArea || !this.listTask) return false;
 
-    const task: HTMLLIElement = document.createElement('li');
-    const closeButton: HTMLButtonElement = document.createElement('button');
-    const cross: HTMLSpanElement = document.createElement('span');
+    const task = document.createElement('li');
+    const closeButton = document.createElement('button');
+    const cross = document.createElement('span');
 
     task.append(this.textArea.value);
     task.classList.add(`${this.todoContainer}__list-item`);
@@ -75,42 +74,48 @@ class Todo {
 
     this.textArea.value = '';
 
-    const numberDescendants: number = this.listTask.childElementCount;
+    if (!this.counterTask || !this.button) return false;
+
+    const numberDescendants = this.listTask.childElementCount;
     if (this.counterTask.lastElementChild) {
       this.counterTask.lastElementChild.textContent = String(numberDescendants);
     }
 
     this.button.classList.remove(`${this.todoContainer}__button_permitted`);
     this.button.setAttribute('disabled', 'true');
+
+    return true;
   }
 
   @boundMethod
   public handleCloseButtonClick(Event: MouseEvent) {
-    if (!this.listTask || !this.counterTask) return;
+    if (!this.listTask || !this.counterTask) return false;
 
     const button = <HTMLButtonElement>Event.currentTarget;
     const li = <HTMLLIElement>button.parentNode;
     li.remove();
 
-    const remainingTasks: number = this.listTask.childElementCount;
+    const remainingTasks = this.listTask.childElementCount;
     if (this.counterTask.lastElementChild) {
       this.counterTask.lastElementChild.textContent = String(remainingTasks);
     }
+    return true;
   }
 
   @boundMethod
   public handleFieldInput() {
-    const BUTTON_CLASS = `${this.todoContainer}__button_permitted`;
+    const buttonClass = `${this.todoContainer}__button_permitted`;
 
-    if (!this.textArea || !this.button) return;
+    if (!this.textArea || !this.button) return false;
 
     if (this.textArea.value !== '') {
       this.button.removeAttribute('disabled');
-      this.button.classList.add(BUTTON_CLASS);
+      this.button.classList.add(buttonClass);
     } else {
-      this.button.classList.remove(BUTTON_CLASS);
+      this.button.classList.remove(buttonClass);
       this.button.setAttribute('disabled', 'true');
     }
+    return true;
   }
 }
 
