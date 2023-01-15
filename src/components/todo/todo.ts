@@ -1,19 +1,9 @@
 import { boundMethod } from 'autobind-decorator';
 
 class Todo {
-  jsContainCompon = '.js-todo-container';
+  public sel: string;
 
-  todoContainer = 'todo-container';
-
-  public selectorTextArea = `${this.jsContainCompon}__text`;
-
-  public selectorButton = `${this.jsContainCompon}__button`;
-
-  public selectorListTask = `${this.jsContainCompon}__list`;
-
-  public selectorCounterTask = `${this.jsContainCompon}__counter`;
-
-  domElementWrapper: HTMLElement;
+  public domElementWrapper: HTMLElement;
 
   public button: HTMLButtonElement | null = null;
 
@@ -24,15 +14,16 @@ class Todo {
   public counterTask: HTMLParagraphElement | null = null;
 
   constructor(domElementWrap: Element) {
+    this.sel = 'todo-container';
     this.domElementWrapper = <HTMLElement>domElementWrap;
     this.init();
   }
 
   public init() {
-    this.button = this.setDomElement(this.selectorButton) as HTMLButtonElement;
-    this.textArea = this.setDomElement(this.selectorTextArea) as HTMLTextAreaElement;
-    this.listTask = this.setDomElement(this.selectorListTask) as HTMLUListElement;
-    this.counterTask = this.setDomElement(this.selectorCounterTask) as HTMLParagraphElement;
+    this.button = this.setDomElement(`.js-${this.sel}__button`) as HTMLButtonElement;
+    this.textArea = this.setDomElement(`.js-${this.sel}__text`) as HTMLTextAreaElement;
+    this.listTask = this.setDomElement(`.js-${this.sel}__list`) as HTMLUListElement;
+    this.counterTask = this.setDomElement(`.js-${this.sel}__counter`) as HTMLParagraphElement;
 
     this.bindEvent();
   }
@@ -59,11 +50,11 @@ class Todo {
     const cross = document.createElement('span');
 
     task.append(this.textArea.value);
-    task.classList.add(`${this.todoContainer}__list-item`);
+    task.classList.add(`${this.sel}__list-item`);
 
-    closeButton.classList.add(`${this.todoContainer}__close-button`);
+    closeButton.classList.add(`${this.sel}__close-button`);
 
-    cross.classList.add(`${this.todoContainer}__cross`);
+    cross.classList.add(`${this.sel}__cross`);
     cross.textContent = '+';
 
     closeButton.append(cross);
@@ -81,7 +72,7 @@ class Todo {
       this.counterTask.lastElementChild.textContent = String(numberDescendants);
     }
 
-    this.button.classList.remove(`${this.todoContainer}__button_permitted`);
+    this.button.classList.remove(`${this.sel}__button_permitted`);
     this.button.setAttribute('disabled', 'true');
 
     return true;
@@ -104,7 +95,7 @@ class Todo {
 
   @boundMethod
   public handleFieldInput() {
-    const buttonClass = `${this.todoContainer}__button_permitted`;
+    const buttonClass = `${this.sel}__button_permitted`;
 
     if (!this.textArea || !this.button) return false;
 
