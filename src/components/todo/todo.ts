@@ -20,10 +20,10 @@ class Todo {
   }
 
   public init() {
-    this.button = this.setDomElement(`.js-${this.sel}__button`) as HTMLButtonElement;
-    this.textArea = this.setDomElement(`.js-${this.sel}__text`) as HTMLTextAreaElement;
-    this.listTask = this.setDomElement(`.js-${this.sel}__list`) as HTMLUListElement;
-    this.counterTask = this.setDomElement(`.js-${this.sel}__counter`) as HTMLParagraphElement;
+    this.button = this.setDomElement(`.js-${this.sel}__button`) as HTMLButtonElement | null;
+    this.textArea = this.setDomElement(`.js-${this.sel}__text`) as HTMLTextAreaElement | null;
+    this.listTask = this.setDomElement(`.js-${this.sel}__list`) as HTMLUListElement | null;
+    this.counterTask = this.setDomElement(`.js-${this.sel}__counter`)as HTMLParagraphElement | null;
 
     this.bindEvent();
   }
