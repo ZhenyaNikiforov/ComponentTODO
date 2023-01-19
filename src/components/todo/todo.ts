@@ -61,16 +61,16 @@ class Todo {
     const closeButton = document.createElement('button');
     const cross = document.createElement('span');
 
-    const stringSubstitute = this.selectorName.replace('.js-', '');
+    const baseClass = this.selectorName.replace('.js-', '');
 
     task.append(this.textArea.value);
-    task.classList.add(`${stringSubstitute}__list-item`);
+    task.classList.add(`${baseClass}__list-item`);
 
     closeButton.classList.add(
-      `${stringSubstitute}__close-button`,
+      `${baseClass}__close-button`,
     );
 
-    cross.classList.add(`${stringSubstitute}__cross`);
+    cross.classList.add(`${baseClass}__cross`);
     cross.textContent = '+';
 
     closeButton.append(cross);
@@ -91,7 +91,7 @@ class Todo {
     }
 
     this.button.classList.remove(
-      `${stringSubstitute}__button_permitted`,
+      `${baseClass}__button_permitted`,
     );
     this.button.setAttribute('disabled', 'true');
 
