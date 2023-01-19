@@ -1,21 +1,21 @@
 import { boundMethod } from 'autobind-decorator';
 
 class Todo {
-  protected selectorName: string;
+  private selectorName: string;
 
-  protected oldValue: string;
+  private oldValue: string;
 
-  protected newValue: string;
+  private newValue: string;
 
-  protected domElementWrapper: HTMLElement | null = null;
+  private domElementWrapper: HTMLElement | null = null;
 
-  protected button: HTMLButtonElement | null = null;
+  private button: HTMLButtonElement | null = null;
 
-  protected textArea: HTMLTextAreaElement | null = null;
+  private textArea: HTMLTextAreaElement | null = null;
 
-  protected listTask: HTMLUListElement | null = null;
+  private listTask: HTMLUListElement | null = null;
 
-  protected counterTask: HTMLParagraphElement | null = null;
+  private counterTask: HTMLParagraphElement | null = null;
 
   constructor(domElementWrap: Element) {
     this.selectorName = '.js-todo-container';
@@ -26,7 +26,7 @@ class Todo {
     this.init();
   }
 
-  protected init() {
+  private init() {
     this.button = this.setDomElement(`${this.selectorName}__button`) as HTMLButtonElement | null;
     this.textArea = this.setDomElement(`${this.selectorName}__text`) as HTMLTextAreaElement | null;
     this.listTask = this.setDomElement(`${this.selectorName}__list`) as HTMLUListElement | null;
@@ -38,7 +38,7 @@ class Todo {
     this.bindEvent();
   }
 
-  protected bindEvent() {
+  private bindEvent() {
     if (!this.button || !this.textArea) {
       return false;
     }
@@ -49,7 +49,7 @@ class Todo {
     return true;
   }
 
-  protected setDomElement(selectorName: string) {
+  private setDomElement(selectorName: string) {
     if (!this.domElementWrapper) {
       return null;
     }
@@ -58,7 +58,7 @@ class Todo {
   }
 
   @boundMethod
-  protected handleButtonClick() {
+  private handleButtonClick() {
     if (!this.textArea || !this.listTask) {
       return false;
     }
@@ -103,7 +103,7 @@ class Todo {
   }
 
   @boundMethod
-  protected handleCloseButtonClick(Event: MouseEvent) {
+  private handleCloseButtonClick(Event: MouseEvent) {
     if (!this.listTask || !this.counterTask) {
       return false;
     }
@@ -121,7 +121,7 @@ class Todo {
   }
 
   @boundMethod
-  protected handleFieldInput() {
+  private handleFieldInput() {
     const buttonClass = `${this.selectorName.replace(this.oldValue, this.newValue)}__button_permitted`;
 
     if (!this.textArea || !this.button) {
