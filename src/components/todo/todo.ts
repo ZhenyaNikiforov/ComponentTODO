@@ -51,7 +51,7 @@ class Todo {
 
   protected setDomElement(selectorName: string) {
     if (!this.domElementWrapper) {
-      return false;
+      return null;
     }
 
     return this.domElementWrapper.querySelector(selectorName);
