@@ -104,8 +104,8 @@ class Todo {
       return false;
     }
 
-    const button = <HTMLButtonElement>Event.currentTarget;
-    const li = <HTMLLIElement>button.parentNode;
+    const button = Event.currentTarget as HTMLButtonElement;
+    const li = button.parentNode as HTMLLIElement;
     li.remove();
 
     if (this.counterTask.lastElementChild) {
