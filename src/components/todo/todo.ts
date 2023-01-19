@@ -3,10 +3,6 @@ import { boundMethod } from 'autobind-decorator';
 class Todo {
   private selectorName: string;
 
-  private oldValue: string;
-
-  private newValue: string;
-
   private domElementWrapper: HTMLElement | null = null;
 
   private button: HTMLButtonElement | null = null;
@@ -19,8 +15,6 @@ class Todo {
 
   constructor(domElementWrap: Element) {
     this.selectorName = '.js-todo-container';
-    this.oldValue = '.js-';
-    this.newValue = '';
 
     this.domElementWrapper = domElementWrap as HTMLElement | null;
     this.init();
@@ -68,13 +62,13 @@ class Todo {
     const cross = document.createElement('span');
 
     task.append(this.textArea.value);
-    task.classList.add(`${this.selectorName.replace(this.oldValue, this.newValue)}__list-item`);
+    task.classList.add(`${this.selectorName.replace('.js-', '')}__list-item`);
 
     closeButton.classList.add(
-      `${this.selectorName.replace(this.oldValue, this.newValue)}__close-button`,
+      `${this.selectorName.replace('.js-', '')}__close-button`,
     );
 
-    cross.classList.add(`${this.selectorName.replace(this.oldValue, this.newValue)}__cross`);
+    cross.classList.add(`${this.selectorName.replace('.js-', '')}__cross`);
     cross.textContent = '+';
 
     closeButton.append(cross);
@@ -95,7 +89,7 @@ class Todo {
     }
 
     this.button.classList.remove(
-      `${this.selectorName.replace(this.oldValue, this.newValue)}__button_permitted`,
+      `${this.selectorName.replace('.js-', '')}__button_permitted`,
     );
     this.button.setAttribute('disabled', 'true');
 
@@ -122,7 +116,7 @@ class Todo {
 
   @boundMethod
   private handleFieldInput() {
-    const buttonClass = `${this.selectorName.replace(this.oldValue, this.newValue)}__button_permitted`;
+    const buttonClass = `${this.selectorName.replace('.js-', '')}__button_permitted`;
 
     if (!this.textArea || !this.button) {
       return false;
