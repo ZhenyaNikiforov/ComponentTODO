@@ -85,9 +85,11 @@ class Todo {
       return false;
     }
 
-    if (this.counterTask.lastElementChild) {
+    const { lastElementChild } = this.counterTask;
+
+    if (lastElementChild) {
       const numberDescendants = this.listTask.childElementCount;
-      this.counterTask.lastElementChild.textContent = String(numberDescendants);
+      lastElementChild.textContent = String(numberDescendants);
     }
 
     this.button.classList.remove(
@@ -108,9 +110,11 @@ class Todo {
     const li = button.parentNode as HTMLLIElement;
     li.remove();
 
-    if (this.counterTask.lastElementChild) {
+    const { lastElementChild } = this.counterTask;
+
+    if (lastElementChild) {
       const remainingTasks = this.listTask.childElementCount;
-      this.counterTask.lastElementChild.textContent = String(remainingTasks);
+      lastElementChild.textContent = String(remainingTasks);
     }
 
     return true;
@@ -124,11 +128,13 @@ class Todo {
       return false;
     }
 
+    const { classList } = this.button;
+
     if (this.textArea.value !== '') {
       this.button.removeAttribute('disabled');
-      this.button.classList.add(buttonClass);
+      classList.add(buttonClass);
     } else {
-      this.button.classList.remove(buttonClass);
+      classList.remove(buttonClass);
       this.button.setAttribute('disabled', 'true');
     }
 
